@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <table id="emp" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Emp Code</th>
+                <th>Emp Name</th>
+                <th>DOB</th>
+                <th>DOJ</th>
+                <th>Department</th>
+                <th>Reporting To</th>
+                <th>Contact No</th>
+                <th>Resigned</th>
+                <th>Resigned Date</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+            $('#emp').DataTable({
+                bServerSide: true,
+                sAjaxSource: '@Url.Action("GetData", "Home")',
+                sServerMethod: 'GET',
+                columns: [
+                    { data: 'EmpCode' },
+                    { data: 'EmpName' },
+                    { data: 'EmpDOB' },
+                    { data: 'EmpDOJ' },
+                    { data: 'EmpDepartment' },
+                    { data: 'EmpReportingTo' },
+                    { data: 'EmpContactNo' },
+                    { data: 'EmpIsResigned' },
+                    { data: 'EmpResignedDate' }
+                ],
+            });
+        });
+
+</script>
